@@ -1,73 +1,72 @@
-# Welcome to your Lovable project
+# 🪙 TEP – Tokenização Empresarial Paraense
 
-## Project info
+O **TEP** é uma plataforma de investimentos baseada na tokenização de empresas locais do Pará. A iniciativa visa democratizar o acesso ao mercado financeiro, permitindo que qualquer pessoa possa investir em negócios da região por meio de tokens digitais.
 
-**URL**: https://lovable.dev/projects/ed74ba85-de55-4d08-a9db-de4147de73d2
+Acesse o site: [tep-token-vista.lovable.app](https://preview--tep-token-vista.lovable.app/)
 
-## How can I edit this code?
+---
 
-There are several ways of editing your application.
+## 🎯 Objetivos do Projeto
 
-**Use Lovable**
+- Impulsionar a economia paraense através da tecnologia blockchain;
+- Permitir que empresas convertam parte de seus ativos em tokens digitais;
+- Oferecer um ambiente seguro e intuitivo para investidores acompanharem os resultados das empresas tokenizadas;
+- Promover a descentralização e transparência nos investimentos regionais.
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/ed74ba85-de55-4d08-a9db-de4147de73d2) and start prompting.
+---
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🌟 Diferenciais da Proposta
 
-**Use your preferred IDE**
+- **Foco Regionalizado**: valorização de empresas locais;
+- **Dashboards Financeiros**: gráficos de receitas e lucros das empresas;
+- **Área Exclusiva para Empresas**: cada empresa possui acesso restrito para acompanhar a performance de seus tokens;
+- **Design Responsivo e Atraente**: interface clara e moderna;
+- **Preparado para Expansão Blockchain**: arquitetura pensada para integração com carteiras digitais no futuro.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+---
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+## 🖼️ Telas do Produto
 
-Follow these steps:
+### 🔍 Página Inicial
+Apresenta uma vitrine com as empresas disponíveis para investimento e seus respectivos tokens.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
 
-# Step 3: Install the necessary dependencies.
-npm i
+---
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
+### 📊 Dashboard da Empresa
+Visualização dos lucros, histórico de crescimento e dados relevantes da empresa tokenizada.
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
 
-**Use GitHub Codespaces**
+---
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+### 🔐 Acesso Empresarial
+Ambiente para as empresas gerenciarem seus dados financeiros e visualizarem relatórios em tempo real.
 
-## What technologies are used for this project?
 
-This project is built with:
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+---
 
-## How can I deploy this project?
+## 👥 Equipe do Projeto
 
-Simply open [Lovable](https://lovable.dev/projects/ed74ba85-de55-4d08-a9db-de4147de73d2) and click on Share -> Publish.
+### 💻 Desenvolvimento Front-End
+- **Yan Matheus** – yanmathzz@gmail.com – [LinkedIn](https://www.linkedin.com/in/yanmatheus)  
+- **Pedro Henrique Carneiro Silva**
 
-## Can I connect a custom domain to my Lovable project?
+### 🛠️ Desenvolvimento Back-End
+- **Luís Cláudio Rodrigues Sarmento**
+- **Lívio Marcel Monteiro Cambraia**
 
-Yes, you can!
+### 🎨 Design de Interface e Experiência do Usuário
+- **Julia Furtado Affonso**
+- **Beatriz Souza Brasileiro**
+- **Ana Letícia Sousa Verde**
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+### 🤝 Negociação e Relação com Empresas
+- **João Pedro Barreiros Baganha**
+- **Renato Xavier Portela Giordano**
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+---
+
+> Projeto em constante evolução. Futuras atualizações incluirão integração blockchain, autenticação para investidores e carteira digital própria.
