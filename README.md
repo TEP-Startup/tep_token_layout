@@ -30,21 +30,21 @@ Acesse o site: [tep-token-vista.lovable.app](https://preview--tep-token-vista.lo
 ### 🔍 Página Inicial
 Apresenta uma vitrine com as empresas disponíveis para investimento e seus respectivos tokens.
 
-![Página Inicial](https://preview--tep-token-vista.lovable.app/assets/home.png)
+
 
 ---
 
 ### 📊 Dashboard da Empresa
 Visualização dos lucros, histórico de crescimento e dados relevantes da empresa tokenizada.
 
-![Dashboard da Empresa](https://preview--tep-token-vista.lovable.app/assets/dashboard.png)
+
 
 ---
 
 ### 🔐 Acesso Empresarial
 Ambiente para as empresas gerenciarem seus dados financeiros e visualizarem relatórios em tempo real.
 
-![Área da Empresa](https://preview--tep-token-vista.lovable.app/assets/painel.png)
+
 
 ---
 
