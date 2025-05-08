@@ -2,7 +2,7 @@
 
 O **TEP** é uma plataforma de investimentos baseada na tokenização de empresas locais do Pará. A iniciativa visa democratizar o acesso ao mercado financeiro, permitindo que qualquer pessoa possa investir em negócios da região por meio de tokens digitais.
 
-Acesse o site: [tep-token-vista.lovable.app](https://preview--tep-token-vista.lovable.app/)
+Acesse o site: [nome do link](link)
 
 ---
 
