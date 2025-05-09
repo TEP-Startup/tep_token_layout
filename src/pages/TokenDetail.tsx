@@ -1,26 +1,35 @@
 
 import React from "react";
-import { useParams, Navigate } from "react-router-dom";
+import { useParams, Navigate, Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import TokenDetailChart from "@/components/TokenDetailChart";
-import TokenChat from "@/components/TokenChat";
+import TokenHistoryTable from "@/components/TokenHistoryTable";
+import CompanyUpdates from "@/components/CompanyUpdates";
 import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getTokenById } from "@/data/tokens";
-import { ArrowUp, ArrowDown } from "lucide-react";
+import { ArrowUp, ArrowDown, Info } from "lucide-react";
+import CompanyFinancials from "@/components/CompanyFinancials";
+import TokenMetrics from "@/components/TokenMetrics";
+import { cachaçaToken } from "@/data/butecoCompany";
 
 const TokenDetail = () => {
   const { id } = useParams<{ id: string }>();
-  const token = id ? getTokenById(id) : undefined;
+  
+  // Check if the token is Cachaça de Jambu, otherwise use the regular token data
+  const token = id === 'cachaca-de-jambu' 
+    ? cachaçaToken 
+    : id ? getTokenById(id) : undefined;
 
   if (!token) {
     return <Navigate to="/404" />;
   }
 
   const isPositive = token.priceChange >= 0;
+  const isJambu = id === 'cachaca-de-jambu';
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -30,13 +39,18 @@ const TokenDetail = () => {
         <div className="container">
           <div className="flex flex-col md:flex-row justify-between items-start mb-8 gap-4">
             <div>
+              <div className="flex items-center gap-2 mb-1">
+                <Link to={`/company/${token.companyId}`} className="text-sm text-muted-foreground hover:underline">
+                  {token.companyName}
+                </Link>
+              </div>
               <h1 className="text-3xl font-bold tracking-tight mb-1 flex items-center gap-2">
                 {token.name}
                 <Badge variant="outline" className="text-sm">
                   {token.symbol}
                 </Badge>
               </h1>
-              <p className="text-muted-foreground">{token.description}</p>
+              <p className="text-muted-foreground">{token.description.substring(0, 100)}...</p>
             </div>
             <div className="flex items-center gap-2">
               <Button variant="outline" size="sm">
@@ -47,77 +61,70 @@ const TokenDetail = () => {
           </div>
           
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
-            <div className="lg:col-span-2">
+            {/* Left Column - Charts */}
+            <div className="lg:col-span-2 space-y-6">
+              {/* Price Chart */}
               <TokenDetailChart 
                 tokenName={token.name} 
                 tokenSymbol={token.symbol} 
                 price={token.price}
                 priceChange={token.priceChange}
               />
-            </div>
-            <div>
-              <Card className="mb-6">
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-xl">Informações</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Preço</span>
-                      <span className="font-medium">R$ {token.price.toFixed(2)}</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Variação 24h</span>
-                      <span
-                        className={`flex items-center gap-1 ${
-                          isPositive ? "text-tep-positive" : "text-tep-negative"
-                        }`}
-                      >
-                        {isPositive ? (
-                          <ArrowUp className="h-4 w-4" />
-                        ) : (
-                          <ArrowDown className="h-4 w-4" />
-                        )}
-                        {Math.abs(token.priceChange).toFixed(2)}%
-                      </span>
-                    </div>
-                    <Separator />
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Volume 24h</span>
-                      <span className="font-medium">
-                        R$ {token.volume.toLocaleString()}
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">ROI 30 dias</span>
-                      <span
-                        className={
-                          token.roi >= 0 ? "text-tep-positive" : "text-tep-negative"
-                        }
-                      >
-                        {token.roi.toFixed(2)}%
-                      </span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Receita Mensal</span>
-                      <span className="font-medium">
-                        R$ {token.revenue.toLocaleString()}
-                      </span>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
               
+              {/* Financial Charts */}
+              <CompanyFinancials 
+                tokenName={token.name}
+                revenue={token.revenue}
+                profit={token.revenue * 0.3} // Mocked profit as 30% of revenue
+              />
+            </div>
+            
+            {/* Right Column - Info */}
+            <div className="space-y-6">
+              {/* Key Metrics */}
+              <TokenMetrics 
+                price={token.price}
+                priceChange={token.priceChange}
+                volume={token.volume}
+                roi={token.roi}
+                revenue={token.revenue}
+              />
+              
+              {/* About Product */}
               <Card>
                 <CardHeader className="pb-3">
                   <CardTitle className="text-xl">Sobre {token.name}</CardTitle>
                 </CardHeader>
                 <CardContent>
+                  {isJambu ? (
+                    <>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        A Cachaça de Jambu é uma bebida artesanal única, produzida pelo Buteco Meu Garoto
+                        utilizando técnicas tradicionais combinadas com inovação. O jambu, planta típica da
+                        região amazônica, confere à cachaça uma experiência sensorial única com seu efeito
+                        "dormência" característico.
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        Nosso processo de produção valoriza os produtores locais de jambu e cana-de-açúcar,
+                        gerando impacto positivo na economia da região. Cada garrafa é numerada e rastreável
+                        via blockchain, garantindo autenticidade e transparência.
+                      </p>
+                      <p className="text-sm text-muted-foreground mb-4">
+                        A tokenização desta cachaça permite que investidores participem do crescimento deste
+                        produto premium, que já conquistou prêmios nacionais e tem expandido sua presença
+                        para o mercado internacional.
+                      </p>
+                    </>
+                  ) : (
+                    <p className="text-sm text-muted-foreground mb-4">
+                      {token.description}
+                    </p>
+                  )}
                   <p className="text-sm text-muted-foreground mb-4">
-                    {token.description}
+                    Este produto é desenvolvido pela <Link to={`/company/${token.companyId}`} className="text-blue-400 hover:underline">{token.companyName}</Link> e utiliza blockchain para tokenizar seus ativos, permitindo que investidores participem do crescimento do produto de forma transparente e segura.
                   </p>
                   <p className="text-sm text-muted-foreground mb-4">
-                    A empresa utiliza tecnologia blockchain para tokenizar seus ativos, permitindo que investidores participem do crescimento do negócio de forma transparente e segura.
+                    Os tokens {token.symbol} representam uma parte do valor do produto e seus detentores têm direitos sobre uma parcela proporcional dos lucros gerados pela comercialização.
                   </p>
                   <div className="flex justify-between text-sm">
                     <span className="text-muted-foreground">Website</span>
@@ -130,8 +137,14 @@ const TokenDetail = () => {
             </div>
           </div>
           
+          {/* Token Movement History */}
           <div className="mb-8">
-            <TokenChat tokenName={token.name} />
+            <TokenHistoryTable tokenSymbol={token.symbol} />
+          </div>
+          
+          {/* Latest Updates */}
+          <div className="mb-8">
+            <CompanyUpdates tokenName={token.companyName} />
           </div>
         </div>
       </main>

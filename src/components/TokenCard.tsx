@@ -11,6 +11,8 @@ export interface TokenData {
   id: string;
   name: string;
   symbol: string;
+  companyId: string;
+  companyName: string;
   price: number;
   priceChange: number;
   volume: number;
@@ -18,6 +20,7 @@ export interface TokenData {
   revenue: number;
   description: string;
   chartData: { value: number }[];
+  featured: boolean;
 }
 
 interface TokenCardProps {
@@ -26,9 +29,9 @@ interface TokenCardProps {
 
 const TokenCard: React.FC<TokenCardProps> = ({ token }) => {
   const isPositive = token.priceChange >= 0;
-
+  
   return (
-    <Card className="overflow-hidden border-border/40 h-full transition-all hover:border-border hover:shadow-md">
+    <Card className={`overflow-hidden border-border/40 h-full transition-all hover:border-border hover:shadow-md ${token.featured ? 'border-2 border-tep-positive' : ''}`}>
       <CardContent className="p-6">
         <div className="flex justify-between mb-4">
           <div>
@@ -37,8 +40,18 @@ const TokenCard: React.FC<TokenCardProps> = ({ token }) => {
               <Badge variant="outline" className="text-xs">
                 {token.symbol}
               </Badge>
+              {token.featured && (
+                <Badge variant="default" className="text-xs bg-tep-positive">
+                  Destaque
+                </Badge>
+              )}
             </div>
-            <div className="flex items-center gap-2">
+            <div className="flex items-center">
+              <span className="text-sm text-muted-foreground">
+                {token.companyName}
+              </span>
+            </div>
+            <div className="flex items-center gap-2 mt-2">
               <span className="text-2xl font-bold">
                 R$ {token.price.toFixed(2)}
               </span>
