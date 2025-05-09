@@ -1,4 +1,3 @@
-
 import React from "react";
 import { useParams, Navigate, Link } from "react-router-dom";
 import Header from "@/components/Header";
@@ -71,12 +70,7 @@ const TokenDetail = () => {
                 priceChange={token.priceChange}
               />
               
-              {/* Financial Charts */}
-              <CompanyFinancials 
-                tokenName={token.name}
-                revenue={token.revenue}
-                profit={token.revenue * 0.3} // Mocked profit as 30% of revenue
-              />
+              
             </div>
             
             {/* Right Column - Info */}
@@ -89,53 +83,56 @@ const TokenDetail = () => {
                 roi={token.roi}
                 revenue={token.revenue}
               />
-              
-              {/* About Product */}
-              <Card>
-                <CardHeader className="pb-3">
-                  <CardTitle className="text-xl">Sobre {token.name}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  {isJambu ? (
-                    <>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        A Cachaça de Jambu é uma bebida artesanal única, produzida pelo Buteco Meu Garoto
-                        utilizando técnicas tradicionais combinadas com inovação. O jambu, planta típica da
-                        região amazônica, confere à cachaça uma experiência sensorial única com seu efeito
-                        "dormência" característico.
-                      </p>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        Nosso processo de produção valoriza os produtores locais de jambu e cana-de-açúcar,
-                        gerando impacto positivo na economia da região. Cada garrafa é numerada e rastreável
-                        via blockchain, garantindo autenticidade e transparência.
-                      </p>
-                      <p className="text-sm text-muted-foreground mb-4">
-                        A tokenização desta cachaça permite que investidores participem do crescimento deste
-                        produto premium, que já conquistou prêmios nacionais e tem expandido sua presença
-                        para o mercado internacional.
-                      </p>
-                    </>
-                  ) : (
-                    <p className="text-sm text-muted-foreground mb-4">
-                      {token.description}
-                    </p>
-                  )}
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Este produto é desenvolvido pela <Link to={`/company/${token.companyId}`} className="text-blue-400 hover:underline">{token.companyName}</Link> e utiliza blockchain para tokenizar seus ativos, permitindo que investidores participem do crescimento do produto de forma transparente e segura.
-                  </p>
-                  <p className="text-sm text-muted-foreground mb-4">
-                    Os tokens {token.symbol} representam uma parte do valor do produto e seus detentores têm direitos sobre uma parcela proporcional dos lucros gerados pela comercialização.
-                  </p>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-muted-foreground">Website</span>
-                    <a href="#" className="text-blue-400 hover:underline">
-                      {token.symbol.toLowerCase()}.com.br
-                    </a>
-                  </div>
-                </CardContent>
-              </Card>
+          
+
+
             </div>
           </div>
+          
+          {/* Agora fora do grid, ocupa toda a largura do container */}
+          <Card className="w-full mb-8">
+            <CardHeader className="pb-3">
+              <CardTitle className="text-xl">Sobre {token.name}</CardTitle>
+            </CardHeader>
+            <CardContent>
+              {isJambu ? (
+                <>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    A Cachaça de Jambu é uma bebida artesanal única, produzida pelo Buteco Meu Garoto
+                    utilizando técnicas tradicionais combinadas com inovação. O jambu, planta típica da
+                    região amazônica, confere à cachaça uma experiência sensorial única com seu efeito
+                    "dormência" característico.
+                  </p>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Nosso processo de produção valoriza os produtores locais de jambu e cana-de-açúcar,
+                    gerando impacto positivo na economia da região. Cada garrafa é numerada e rastreável
+                    via blockchain, garantindo autenticidade e transparência.
+                  </p>
+                  <p className="text-sm text-muted-foreground mb-4">
+                    A tokenização desta cachaça permite que investidores participem do crescimento deste
+                    produto premium, que já conquistou prêmios nacionais e tem expandido sua presença
+                    para o mercado internacional.
+                  </p>
+                </>
+              ) : (
+                <p className="text-sm text-muted-foreground mb-4">
+                  {token.description}
+                </p>
+              )}
+              <p className="text-sm text-muted-foreground mb-4">
+                Este produto é desenvolvido pela <Link to={`/company/${token.companyId}`} className="text-blue-400 hover:underline">{token.companyName}</Link> e utiliza blockchain para tokenizar seus ativos, permitindo que investidores participem do crescimento do produto de forma transparente e segura.
+              </p>
+              <p className="text-sm text-muted-foreground mb-4">
+                Os tokens {token.symbol} representam uma parte do valor do produto e seus detentores têm direitos sobre uma parcela proporcional dos lucros gerados pela comercialização.
+              </p>
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Website</span>
+                <a href="#" className="text-blue-400 hover:underline">
+                  {token.symbol.toLowerCase()}.com.br
+                </a>
+              </div>
+            </CardContent>
+          </Card>
           
           {/* Token Movement History */}
           <div className="mb-8">

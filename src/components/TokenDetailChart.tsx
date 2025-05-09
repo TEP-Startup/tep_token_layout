@@ -155,7 +155,7 @@ const TokenDetailChart: React.FC<TokenDetailChartProps> = ({
         
         <Tabs defaultValue="price" className="w-full">
           <TabsContent value="price" className="mt-0">
-            <div className="h-[400px]">
+            <div className="h-[250px]">
               <ResponsiveContainer width="100%" height="100%">
                 <AreaChart
                   data={priceData}
