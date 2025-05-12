@@ -21,7 +21,7 @@ public class Token {
     @Column(nullable = false)
     private TokenType type;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "product_id")
     private Product product;
 
