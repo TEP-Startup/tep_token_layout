@@ -10,7 +10,7 @@ public class TokenDTO {
     private Long id;
     private Long companyId;
     private TokenType type;
-    private ProductDTO product;
+    private Long productId;
     private String name;
     private String symbol;
     private String description;
@@ -27,7 +27,7 @@ public class TokenDTO {
         companyId = entity.getCompany().getId();
         type = entity.getType();
         if (entity.getProduct() != null) {
-            product = new ProductDTO(entity.getProduct());
+            productId = entity.getProduct().getId();
         }
         name = entity.getName();
         symbol = entity.getSymbol();
@@ -62,12 +62,12 @@ public class TokenDTO {
         this.type = type;
     }
 
-    public ProductDTO getProduct() {
-        return product;
+    public Long getProductId() {
+        return productId;
     }
 
-    public void setProduct(ProductDTO product) {
-        this.product = product;
+    public void setProductId(Long productId) {
+        this.productId = productId;
     }
 
     public String getName() {

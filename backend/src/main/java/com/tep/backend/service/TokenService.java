@@ -61,8 +61,8 @@ public class TokenService {
         Company company = companyRepository.getReferenceById(dto.getCompanyId());
         entity.setCompany(company);
         
-        if (dto.getProduct() != null && dto.getProduct().getId() != null) {
-            Product product = productRepository.getReferenceById(dto.getProduct().getId());
+        if (dto.getProductId() != null) {
+            Product product = productRepository.getReferenceById(dto.getProductId());
             entity.setProduct(product);
         }
         
